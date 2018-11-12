@@ -134,7 +134,7 @@
         $(document).ready(function () {
             $("#btn").click(function () {
                 input = $("#autocomplete").val();
-                $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + input + "&appid=f3849473ebd050f671afb5265981a468&units=metric", function (result) {
+                $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=" + input + "&appid=f3849473ebd050f671afb5265981a468&units=metric", function (result) {
                     console.log(result);
                     $("#city").text(result.name);
                     $("#temp").text(result.main["temp"] + "°c");
