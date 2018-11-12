@@ -1,150 +1,202 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bank</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <meta name="theme-color" content="#17a2b8">
 </head>
 
 <body>
-    <style>
-
+    <style type="text/css">
         body {
-        
-            background-size: cover;
+            font-family: 'Ubuntu', sans-serif;
         }
-        .btn{
-            background-color: cadetblue;
-            color: white;
-            height: 50px;
-            border-radius: 34px;
-        }
-        .input-group{   
-            width: 40%;
-            padding: 20px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);  
-            
-              
-        }
-        .para{
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            font-size: 50px;
-            font-weight: bold; 
-            text-decoration: overline;
-            color:cadetblue;
 
+        .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, .25);
         }
-        .input-group-btn{
-            color: #FFFFFF;   
-        }   
-        .form-control{
-            height: 50px;
-            border-radius: 34px;
-            border: 2px solid  cadetblue;
+
+        /* .card {
+            width: 100%;
+            margin: 0 auto;
+        } */
+
+        .errorBorder {
+            border-color: #f30a0a;
+            box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
         }
-        
-        ul {
-            list-style-type: none;
+
+        #autocomplete {
+            text-transform: uppercase;
+        }
+
+        p {
+            margin-bottom: 5px;
+        }
+
+        /* .card-body {
+            color: #5a5a5a;
+        } */
+
+        main {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-flex-direction: row;
+            -moz-box-flex-direction: row;
+            -webkit-flex-direction: row;
+            flex-direction: row;
             position: fixed;
             top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
             width: 100%;
-            display: block;
-           
-        }
-        li  { 
-            float: right;
-            color: cadetblue;
-          
-            padding: 14px 16px;
-            text-decoration: none;
+            height: 100%;
         }
 
-        li:hover {
-            background-color: white;
-            color:#333;
+        .container {
+            margin: auto;
         }
-        li.first {
-            background-color: white;
-            color:black;
+
+        .form-group {
+            margin-bottom: 12px;
         }
-        .view{
-            font-size: 22px;
-            background-color: rgba(12, 12, 12, 12);
-            color: white;
-            display: inline-block;
+
+        * {
+            font-family: Montserrat;
+            color: #17252a;
         }
-        .visibility{
-            visibility: hidden;
+
+        .div1 {
+            max-width: 30%;
+            margin: 0 auto !important;
+            float: none !important;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+            padding: 18px;
+            border-radius: 8px;
+            background-color: #3aafa9;
         }
-     
+
+        .div2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
     </style>
-    <p class="para">Weather</p>
-    <div class="input-group">
-        <input type="text" id="autocomplete" class="form-control" placeholder="Enter City" name="search">
-        <div class="input-group-btn">
-            <button class="btn btn-default" id="btn"><i class="glyphicon glyphicon-search"></i></button>
+    <nav>
+    </nav>
+    <main>
+        <div class="container" style="padding-top: 20px;">
+            <div class="row" style="margin-bottom: 16px;">
+                <div class="col-lg-11">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="autocomplete" placeholder="Enter city Name">
+                    </div>
+                </div>
+                <div class="col-lg-1">
+                    <button id="searchBtn" type="button" class="btn btn-info btn-block"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            <div class="row" style="margin: 0 auto;">
+                <div class="alert alert-danger" style="display: none; width: 100%; text-align: center;">
+                    <i class="fas fa-times-circle"></i> <span id="errorMsg"></span>
+                </div>
+                <!--<div class="card" style="display: none;" id="bankcard">
+                    <div class="card-body">
+                        <h4 class="card-title"><strong><span style="text-decoration: underline;" id="bankName"></span></strong></h4>
+                        <p class="card-text"><span id="city"></span></p>
+                        <p class="card-text"><strong>Temperature</strong> <span id="temp"></span></p>
+                        <p class="card-text"><strong>Weather</strong> <span id="main"></span></p>
+                        <p class="card-text"><strong>Description</strong> <span id="desc"></span></p>
+                    </div>
+                </div>-->
+            </div>
         </div>
-    </div>
-    <div class="view visibility">
-        <table>
-            <tr>
-                <td>
-                    <p>City Name:</p>
-                </td>
-                <td>
-                    <p id="city"></p>
-                </td>
-
-            </tr>
-            <tr>
-                <td>Temp:</td>
-                <td>
-                    <p id="temp"></p>
-                </td>
-            </tr>
-            <tr>
-                <td>Main:</td>
-                <td>
-                    <p id="main"></p>
-                </td>
-            </tr>
-            <tr>
-                <td>Desc:</td>
-                <td>
-                    <p id="desc"></p>
-                </td>
-            </tr>
-            <p id="icon"> </p>
-        </table>
-    </div>
-
+    </main>
+    <footer>
+    </footer>
     <script>
-        var input;
         $(document).ready(function () {
-            $("#btn").click(function () {
-                input = $("#autocomplete").val();
-                $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=" + input + "&appid=f3849473ebd050f671afb5265981a468&units=metric", function (result) {
-                    console.log(result);
-                    $("#city").text(result.name);
-                    $("#temp").text(result.main["temp"] + "°c");
-                    $("#main").text(result.weather["0"].main);
-                    $("#desc").text(result.weather["0"].description);
-                    $("#icon").attr("src", "http://openweathermap.org/img/w/" + result.weather["0"].icon + ".png");
-                    $(".view").removeClass("visibility");
-                });
+            $(document).ajaxStart(function () {
+                $("#searchBtn").html('<i class="fas fa-circle-notch fa-spin"></i>');
             });
+
+            $(document).ajaxStop(function () {
+                $("#searchBtn").html('<i class="fas fa-search"></i>');
+            });
+            $("#searchBtn").click(function () {
+                fetch();
+            });
+
+            $('#autocomplete').keydown(function (event) {
+                var keyCode = (event.keyCode ? event.keyCode : event.which);
+                if (keyCode == 13) {
+                    fetch();
+                }
+            });
+
+            function fetch() {
+                $(".alert").css("display", "none");
+                var city = $("#autocomplete").val();
+                if (city == "") {
+                    $("#autocomplete").addClass("animated shake");
+                    $("#autocomplete").addClass("errorBorder");
+                    setTimeout(function () {
+                        $("#autocomplete").removeClass("errorBorder");
+                        $("#autocomplete").removeClass("animated shake");
+                    }, 1000);
+                } else {
+                    $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=f3849473ebd050f671afb5265981a468&units=metric", function (result) {
+                        console.log(result);
+                        $("#city").text(result.name);
+                        $("#temp").text(result.main["temp"] + "°c");
+                        $("#main").text(result.weather["0"].main);
+                        $("#desc").text(result.weather["0"].description);
+                        $("#icon").attr("src", "http://openweathermap.org/img/w/" + result.weather["0"].icon + ".png");
+                        $("#bankcard").fadeIn();
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                        $("#bankcard").css("display", "none");
+                        console.log("textStatus " + textStatus + " errorThrown " + errorThrown);
+                        $("#errorMsg").text("Enter valid city name");
+                        $(".alert").fadeIn();
+                    });
+                }
+            }
         });
     </script>
+    <div class="div1" style="display: none;" id="bankcard">
+        <span id="city"></span></p>
+        <p id="city"></p>
+        <div class="div2">
+            <div style="text-align: center;">
+                <!-- <img height="100px" src="https://image.flaticon.com/icons/svg/861/861059.svg" alt=""> -->
+                <br>
+                <span id="main"></span>
+                <br>
+                <span id="desc"></span>
+            </div>
+            <span id="temp" style="font-size: 4.5rem"></span>
+        </div>
+    </div>
 </body>
 
 </html>
