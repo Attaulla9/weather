@@ -84,6 +84,9 @@
             color: white;
             display: inline-block;
         }
+        .visibility{
+            visibility: hidden;
+        }
      
     </style>
     <p class="para">Weather</p>
@@ -138,7 +141,7 @@
                     $("#main").text(result.weather["0"].main);
                     $("#desc").text(result.weather["0"].description);
                     $("#icon").attr("src", "http://openweathermap.org/img/w/" + result.weather["0"].icon + ".png");
-
+                    $(".view").removeClass("visibility");
                 });
             });
         });
