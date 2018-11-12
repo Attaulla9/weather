@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bank</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <style>
+
+        body {
+        
+            background-size: cover;
+        }
+        .btn{
+            background-color: cadetblue;
+            color: white;
+            height: 50px;
+            border-radius: 34px;
+        }
+        .input-group{   
+            width: 40%;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);  
+            
+              
+        }
+        .para{
+            position:absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-size: 50px;
+            font-weight: bold; 
+            text-decoration: overline;
+            color:cadetblue;
+
+        }
+        .input-group-btn{
+            color: #FFFFFF;   
+        }   
+        .form-control{
+            height: 50px;
+            border-radius: 34px;
+            border: 2px solid  cadetblue;
+        }
+        
+        ul {
+            list-style-type: none;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: block;
+           
+        }
+        li  { 
+            float: right;
+            color: black;
+          
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li:hover {
+            background-color: white;
+            color:#333;
+        }
+        li.first {
+            background-color: white;
+            color:black;
+        }
+        .view{
+            font-size: 22px;
+            background-color: rgba(12, 12, 12, 12);
+            color: white;
+            display: inline-block;
+            
+        }
+
+        .visibility{
+            visibility: hidden;
+        }
+     
+    </style>
+    <p class="para">Weather</p>
+    <div class="input-group">
+        <input type="text" id="autocomplete" class="form-control" placeholder="Enter City" name="search">
+        <div class="input-group-btn">
+            <button class="btn btn-default" id="btn"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+    </div>
+    <div class="view visibility">
+        <table>
+            <tr>
+                <td>
+                    <p>City Name:</p>
+                </td>
+                <td>
+                    <p id="city"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Temp:</td>
+                <td>
+                    <p id="temp"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>Main:</td>
+                <td>
+                    <p id="main"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>Desc:</td>
+                <td>
+                    <p id="desc"></p>
+                </td>
+            </tr>
+            <p id="icon"> </p>
+        </table>
+    </div>
+
+    <script>
+        var input;
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                input = $("#autocomplete").val();
+                $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + input + "&appid=f3849473ebd050f671afb5265981a468&units=metric", function (result) {
+                    console.log(result);
+                    $("#city").text(result.name);
+                    $("#temp").text(result.main["temp"] + "°c");
+                    $("#main").text(result.weather["0"].main);
+                    $("#desc").text(result.weather["0"].description);
+                    $("#icon").attr("src", "http://openweathermap.org/img/w/" + result.weather["0"].icon + ".png");
+                    $(".view").removeClass("visibility");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
